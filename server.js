@@ -5,7 +5,7 @@ var port=process.env.PORT||3000;
 var routes = require('./app/routes/index.js');
 var mongo = require('mongodb').MongoClient;//requiring the MongoDB Node.js driver with - MongoClient() is an object that allows use to use functionality like connect. Initialize express before connecting to mongodb!!!
 
-mongo.connect('mongodb://localhost:27017/clementinejs', function (err, db) {
+mongo.connect('mongodb://test:test@ds155747.mlab.com:55747/beginnertutorial', function (err, db) {
   if(err){
     throw new Error("Database failed to connect!!!!");
   } else {
