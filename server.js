@@ -2,10 +2,13 @@
 var express=require("express");//including Express as a dependency of our application
 var app=express();// initializing Express
 var port=process.env.PORT||3000;
+var routes = require('./app/routes/index.js');
 
-app.get("/", function(req, res){
+routes(app);//allow us to use Express functionality within the scope of our new routes function
+
+/*app.get("/", function(req, res){
   res.sendFile(process.cwd()+"/index.html");//process.cwd() is like __dirname
-});//.get is a method that is going to take a request (req) from the client (browser) and respond (res) by sending  a message to the browser
+});//.get is a method that is going to take a request (req) from the client (browser) and respond (res) by sending  a message to the browser*/
 
 app.listen(port, function(){
   console.log("Listening to port: "+port);
