@@ -4,6 +4,9 @@ var app=express();// initializing Express
 var port=process.env.PORT||3000;
 var routes = require('./app/routes/index.js');
 
+app.use('/public', express.static(process.cwd() + '/public'));//bind the directory path for /public to a shortcut: /public
+app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
+
 routes(app);//allow us to use Express functionality within the scope of our new routes function
 
 /*app.get("/", function(req, res){
