@@ -8,5 +8,7 @@ module.exports=function(app,db){
         res.sendFile(process.cwd()+"/public/index.html");
       });
   app.route("/api/clicks")
-      .get(clickHandler.getClicks);//defining a new route and execute the controller function to get results from the database
+      .get(clickHandler.getClicks)//defining a new route and execute the controller function to get results from the database
+      .post(clickHandler.addClick)//defining a new route and execute the controller function to post results to the database
+      .delete(clickHandler.resetClicks);//defining a new route and execute the controller function to delete results from the database
 };//.route is an alternative to app.get, and let's us bundle together several types of routes for a single page request

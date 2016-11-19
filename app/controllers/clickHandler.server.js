@@ -25,5 +25,26 @@ function clickHandler (db) {
             }
         });//findOne method is a MongoDB query that returns the first document that meets the criteria
     };//getClicks method taking a request and response as parameters
+    this.addClick=function(req,res){
+      clicks.findAndModify(
+        {},//return all documents
+        {"_id":1},//provides the sort order
+        {$inc:{"clicks":1}},//inc method takes the property and increments it by 1
+        function(err, result){
+          if(err){throw err;}
+          res.json(result);
+        }//throw err or return back the JSON object
+      );
+    };//the addClick method modifies the db data
+    this.resetClicks=function(req,res){
+      clicks.update(
+        {},
+        {"clicks":0},//setting clicks to 0 again
+        function(err, result){
+          if(err) {throw err;}
+          res.json(result);
+        }//throw err or return back the JSON object
+      );
+    };//the resetClicks method sets the clicks to 0
 }//a client-side controller that registers clicks
 module.exports = clickHandler;//export the function object to be used elsewhere in node

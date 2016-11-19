@@ -11,7 +11,6 @@ mongo.connect('mongodb://test:test@ds155747.mlab.com:55747/beginnertutorial', fu
   } else {
     console.log("MongoDB connected successfully!")
   }
-
   app.use('/public', express.static(process.cwd() + '/public'));//bind the directory path for /public to a shortcut: /public
   app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 
