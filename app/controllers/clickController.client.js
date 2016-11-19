@@ -2,19 +2,19 @@
 
 (function(){
   //Creating the controller
-  var addButton=document.querySelector(".btn.add");
-  var deleteButton=document.querySelector(".btn.delete");
+  var addButton=document.querySelector(".btn-add");
+  var deleteButton=document.querySelector(".btn-delete");
   var clickNbr=document.querySelector("#click-nbr");
-  var apiURL="http://localhost:3000/api/clicks";
+  var apiUrl="http://localhost:3000/api/clicks";
 
   //creating the controller functions
   function ready(fn){
-    if(typeOf fn !== "function") {
+    if(typeof fn !== "function") {
       return;
     }//prevents elements like arrays and strings being provided as arguments
     if(document.readyState === "complete"){
       return fn();
-    }//when the document is ready provide the function üassed as an argument
+    }//when the document is ready provide the function passed as an argument
     document.addEventListener("DOMContentLoaded", fn, false);//add an eventListener if the document is not loaded
   }
   function ajaxRequest(method, url, callback){
@@ -35,15 +35,15 @@
 
   ready(ajaxRequest("GET", apiUrl, updateClickCount));//execute the ready function passing in the ajax function
   addButton.addEventListener("click", function(){
-    ajaxRequest("POST", apuUrl, function(){
-      ajaxRequest("GET", apiUrl, updateClickCount)
+    ajaxRequest("POST", apiUrl, function(){
+      ajaxRequest("GET", apiUrl, updateClickCount);
     });
   }, false);//add EventListener that sends a POST request that increases the count and GETs the value of clicks back
 
   deleteButton.addEventListener("click", function(){
-    ajaxRequest("DELETE", apuUrl, function(){
-      ajaxRequest("GET", apiUrl, updateClickCount)
+    ajaxRequest("DELETE", apiUrl, function(){
+      ajaxRequest("GET", apiUrl, updateClickCount);
     });
-  }, false);//add EventListener that sends a DELETE request that sets the count to 0 and GETs the value of clicks back 
+  }, false);//add EventListener that sends a DELETE request that sets the count to 0 and GETs the value of clicks back
 
 })();//call an immediately invoked function expression
